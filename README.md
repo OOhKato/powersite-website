@@ -13,8 +13,7 @@ This student project focuses on redesigning and rebuilding the Powerwise.site we
 - Optimize performance, accessibility, and SEO
 
 ## Tech Stack
-- HTML, CSS, JavaScript
-- Optional: React
+- HTML, JavaScript, React, TailwindCSS
 
 ## Outcome
 A modern, user-friendly, and high-performance website for Powerwise.site.
