@@ -1,16 +1,54 @@
-# React + Vite
+# Powerwise AI — Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This student project focuses on redesigning and rebuilding the Powerwise.site website with a modern look and improved performance.
 
-Currently, two official plugins are available:
+## Goals
+- Improve user experience (UX)
+- Create a clean, responsive user interface (UI)
+- Build a maintainable and scalable codebase
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Scope
+- Analyze the current website
+- Design a new UI/UX concept
+- Implement the frontend using modern technologies
+- Optimize performance, accessibility, and SEO
 
-## React Compiler
+## Tech Stack
+- **React** — Component-based UI
+- **Vite** — Fast development build tool with HMR
+- **Tailwind CSS v4** — Utility-first styling
+- **JavaScript (JSX)** — Application logic
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Project Structure
+```
+src/
+├── components/
+│   ├── Navbar.jsx       # Navigation with Light/Dark toggle
+│   ├── Hero.jsx         # Landing section
+│   ├── Timeline.jsx     # Project milestones
+│   ├── Solution.jsx     # Solutions overview
+│   ├── News.jsx         # News & updates
+│   ├── Team.jsx         # Team members
+│   ├── Contact.jsx      # Contact form
+│   └── Footer.jsx       # Footer
+├── ThemeContext.jsx      # Light/Dark mode state
+├── App.jsx
+├── main.jsx
+└── index.css
+```
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```bash
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+
+# Build for production
+npm run build
+```
+
+## Outcome
+A modern, user-friendly, and high-performance website for Powerwise.site — featuring a Dark/Light Mode toggle, placeholder-ready sections, and a consistent green & black design system.
