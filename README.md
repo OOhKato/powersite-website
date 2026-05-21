@@ -1,6 +1,6 @@
 # Powerwise AI — Website
 
-This student project focuses on redesigning and rebuilding the Powerwise.site website with a modern look and improved performance.
+This student project focuses on redesigning and rebuilding the Powerwise.site website with a modern look and improved performance. Because it is a startup the main goal is to attract new investors for additional funding.
 
 ## Goals
 - Improve user experience (UX)
