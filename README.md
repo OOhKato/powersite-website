@@ -1,5 +1,6 @@
-# powersite-website
-This student project focuses on redesigning and rebuilding the Powerwise.site website with a modern look and improved performance.
+# Powerwise AI — Website
+
+This student project focuses on redesigning and rebuilding the Powerwise.site website with a modern look and improved performance. Because it is a startup the main goal is to attract new investors for additional funding.
 
 ## Goals
 - Improve user experience (UX)
@@ -13,8 +14,41 @@ This student project focuses on redesigning and rebuilding the Powerwise.site we
 - Optimize performance, accessibility, and SEO
 
 ## Tech Stack
-- HTML, CSS, JavaScript
-- Optional: React
+- **React** — Component-based UI
+- **Vite** — Fast development build tool with HMR
+- **Tailwind CSS v4** — Utility-first styling
+- **JavaScript (JSX)** — Application logic
+
+## Project Structure
+```
+src/
+├── components/
+│   ├── Navbar.jsx       # Navigation with Light/Dark toggle
+│   ├── Hero.jsx         # Landing section
+│   ├── Timeline.jsx     # Project milestones
+│   ├── Solution.jsx     # Solutions overview
+│   ├── News.jsx         # News & updates
+│   ├── Team.jsx         # Team members
+│   ├── Contact.jsx      # Contact form
+│   └── Footer.jsx       # Footer
+├── ThemeContext.jsx      # Light/Dark mode state
+├── App.jsx
+├── main.jsx
+└── index.css
+```
+
+## Getting Started
+
+```bash
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+
+# Build for production
+npm run build
+```
 
 ## Outcome
-A modern, user-friendly, and high-performance website for Powerwise.site.
+A modern, user-friendly, and high-performance website for Powerwise.site — featuring a Dark/Light Mode toggle, placeholder-ready sections, and a consistent green & black design system.
