@@ -1,4 +1,6 @@
+import { Link } from 'react-router-dom'
 import { useTheme } from '../ThemeContext'
+import { PageSection, PageContainer, SectionHeader } from './Section'
 
 const solutions = [
   { number: '01', title: 'Solution Title', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Placeholder text for this solution card.' },
@@ -7,7 +9,7 @@ const solutions = [
   { number: '04', title: 'Solution Title', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Placeholder text for this solution card.' },
 ]
 
-export default function Solutions() {
+export default function Solutions({ standalone = false }) {
   const { light } = useTheme()
 
   const sectionBorder = light ? 'border-green-500/20' : 'border-green-500/8'
@@ -20,44 +22,44 @@ export default function Solutions() {
   const numColor = light ? 'text-green-500/20 group-hover:text-green-500/35' : 'text-green-500/15 group-hover:text-green-500/25'
 
   return (
-    <section id="solutions" className={`py-24 px-6 relative border-t ${sectionBorder}`}>
-      <div className="absolute inset-0 grid-bg opacity-20" />
+    <PageSection id="solutions" standalone={standalone} className={`relative ${standalone ? '' : 'border-t'} ${sectionBorder}`}>
+      <div className="absolute inset-0 grid-bg opacity-20 pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto relative z-10">
-        <div className="max-w-2xl mb-14">
-          <span className={`inline-block text-xs font-bold uppercase tracking-widest border px-3 py-1 rounded-full mb-4 ${badge}`}>
+      <PageContainer className="relative z-10">
+        <SectionHeader>
+          <span className={`inline-block mb-4 text-xs font-bold uppercase tracking-widest border px-3 py-1 rounded-full ${badge}`}>
             Solutions
           </span>
-          <h2 className={`text-4xl md:text-5xl font-black mb-4 ${heading}`}>
+          <h2 className={`mb-4 text-3xl sm:text-4xl md:text-5xl font-black ${heading}`}>
             What We <span className="text-green-500">Offer</span>
           </h2>
-          <p className={`text-base leading-relaxed ${body}`}>
+          <p className={`mx-auto max-w-2xl text-base leading-relaxed ${body}`}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Placeholder subtitle for the solutions section goes here.
           </p>
-        </div>
+        </SectionHeader>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div className="grid grid-cols-1 gap-5 md:grid-cols-2 md:gap-6 lg:gap-8">
           {solutions.map((s) => (
             <div key={s.number}
-              className={`group relative p-8 rounded-2xl border card-glow transition-all duration-300 overflow-hidden ${card}`}>
+              className={`group relative overflow-hidden rounded-2xl border p-6 md:p-8 text-center card-glow transition-all duration-300 ${card}`}>
               <div className="absolute top-0 right-0 w-20 h-20 pointer-events-none">
                 <div className="absolute top-0 right-0 w-px h-12 bg-gradient-to-b from-green-500/30 to-transparent" />
                 <div className="absolute top-0 right-0 w-12 h-px bg-gradient-to-l from-green-500/30 to-transparent" />
               </div>
-              <div className={`text-5xl font-black mb-5 transition-colors ${numColor}`}>{s.number}</div>
+              <div className={`text-5xl font-black mb-4 transition-colors ${numColor}`}>{s.number}</div>
               <h3 className={`font-bold text-xl mb-3 ${heading}`}>{s.title}</h3>
               <p className={`text-sm leading-relaxed mb-5 ${body}`}>{s.description}</p>
-              <a href="#contact"
-                className="inline-flex items-center gap-2 text-green-600 text-sm font-semibold hover:gap-3 transition-all">
+              <Link to="/contact"
+                className="inline-flex items-center justify-center gap-2 text-green-600 text-sm font-semibold hover:gap-3 transition-all">
                 Learn more
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
-              </a>
+              </Link>
             </div>
           ))}
         </div>
-      </div>
-    </section>
+      </PageContainer>
+    </PageSection>
   )
 }
