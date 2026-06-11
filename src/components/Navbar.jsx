@@ -1,5 +1,8 @@
 import { useState, useEffect } from 'react'
+import { Link, NavLink } from 'react-router-dom'
 import { useTheme } from '../ThemeContext'
+import { PageContainer } from './Section'
+import { navLinks } from '../nav'
 
 function SunIcon() {
   return (
@@ -18,7 +21,7 @@ function MoonIcon() {
   )
 }
 
-export default function Navbar() {
+export default function Navbar({ hideLinks = false }) {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const { light, toggle } = useTheme()
@@ -28,15 +31,6 @@ export default function Navbar() {
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
-
-  const links = [
-    { label: 'Home', href: '#home' },
-    { label: 'Timeline', href: '#timeline' },
-    { label: 'Solutions', href: '#solutions' },
-    { label: 'News', href: '#news' },
-    { label: 'Team', href: '#team' },
-    { label: 'Contact Us', href: '#contact' },
-  ]
 
   const navBg = scrolled
     ? light
@@ -48,11 +42,12 @@ export default function Navbar() {
     ? 'text-gray-600 hover:text-green-600'
     : 'text-gray-400 hover:text-green-400'
 
+  const activeLink = light ? 'text-green-600' : 'text-green-400'
+
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${navBg}`}>
-      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-        {/* Logo */}
-        <a href="#home" className="flex items-center gap-3 group">
+      <PageContainer className="flex items-center justify-between py-3 sm:py-4 !text-left">
+        <Link to="/" className="flex items-center gap-3 group">
           <div className="relative w-9 h-9">
             <div className="absolute inset-0 rounded-lg bg-green-500 opacity-20 group-hover:opacity-40 transition-opacity blur-sm" />
             <div className={`relative w-9 h-9 rounded-lg border border-green-500/60 flex items-center justify-center ${light ? 'bg-white' : 'bg-black'}`}>
@@ -63,22 +58,26 @@ export default function Navbar() {
             <span className={`font-black text-lg tracking-tight ${light ? 'text-gray-900' : 'text-white'}`}>Powerwise</span>
             <span className="text-green-500 font-black text-lg tracking-tight"> AI</span>
           </div>
-        </a>
+        </Link>
 
-        {/* Desktop Links */}
-        <div className="hidden lg:flex items-center gap-7">
-          {links.map(({ label, href }) => (
-            <a key={label} href={href}
-              className={`text-sm font-medium transition-colors duration-200 relative group ${linkColor}`}>
-              {label}
-              <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-green-500 group-hover:w-full transition-all duration-300" />
-            </a>
-          ))}
-        </div>
+        {!hideLinks && (
+          <div className="hidden lg:flex items-center gap-7">
+            {navLinks.map(({ label, to }) => (
+              <NavLink
+                key={to}
+                to={to}
+                className={({ isActive }) =>
+                  `text-sm font-medium transition-colors duration-200 relative group ${isActive ? activeLink : linkColor}`
+                }
+              >
+                {label}
+                <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-green-500 group-hover:w-full transition-all duration-300" />
+              </NavLink>
+            ))}
+          </div>
+        )}
 
-        {/* Right side: toggle + CTA */}
         <div className="hidden lg:flex items-center gap-3">
-          {/* Light/Dark toggle */}
           <button
             onClick={toggle}
             title={light ? 'Switch to Dark Mode' : 'Switch to Light Mode'}
@@ -91,14 +90,8 @@ export default function Navbar() {
             {light ? <MoonIcon /> : <SunIcon />}
             <span>{light ? 'Dark' : 'Light'}</span>
           </button>
-
-          <a href="#contact"
-            className="px-5 py-2.5 text-sm font-bold text-black bg-green-400 rounded-lg hover:bg-green-300 transition-all duration-200 hover:shadow-lg hover:shadow-green-500/30">
-            Get Started
-          </a>
         </div>
 
-        {/* Mobile: toggle + burger */}
         <div className="lg:hidden flex items-center gap-2">
           <button
             onClick={toggle}
@@ -110,8 +103,10 @@ export default function Navbar() {
           >
             {light ? <MoonIcon /> : <SunIcon />}
           </button>
-          <button className={`transition-colors ${light ? 'text-gray-600 hover:text-green-600' : 'text-gray-300 hover:text-green-400'}`}
-            onClick={() => setMenuOpen(!menuOpen)}>
+          <button
+            className={`transition-colors ${light ? 'text-gray-600 hover:text-green-600' : 'text-gray-300 hover:text-green-400'}`}
+            onClick={() => setMenuOpen(!menuOpen)}
+          >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               {menuOpen
                 ? <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -119,24 +114,23 @@ export default function Navbar() {
             </svg>
           </button>
         </div>
-      </div>
+      </PageContainer>
 
-      {/* Mobile Menu */}
       {menuOpen && (
-        <div className={`lg:hidden border-t px-6 py-5 flex flex-col gap-4 ${light ? 'bg-white border-green-500/20' : 'bg-black/98 border-green-500/20'}`}>
-          {links.map(({ label, href }) => (
-            <a key={label} href={href}
-              className={`text-sm font-medium transition-colors py-1 ${linkColor}`}
-              onClick={() => setMenuOpen(false)}>
+        <PageContainer className={`lg:hidden flex flex-col items-center gap-4 border-t py-5 text-center ${light ? 'bg-white border-green-500/20' : 'bg-black/98 border-green-500/20'}`}>
+          {navLinks.map(({ label, to }) => (
+            <NavLink
+              key={to}
+              to={to}
+              className={({ isActive }) =>
+                `text-sm font-medium transition-colors py-1 w-full ${isActive ? activeLink : linkColor}`
+              }
+              onClick={() => setMenuOpen(false)}
+            >
               {label}
-            </a>
+            </NavLink>
           ))}
-          <a href="#contact"
-            className="mt-2 py-3 text-sm font-bold text-black bg-green-400 rounded-lg text-center hover:bg-green-300 transition-colors"
-            onClick={() => setMenuOpen(false)}>
-            Get Started
-          </a>
-        </div>
+        </PageContainer>
       )}
     </nav>
   )
