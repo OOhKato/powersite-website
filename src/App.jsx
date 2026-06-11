@@ -7,6 +7,8 @@ import SolutionsPage from './pages/SolutionsPage'
 import NewsPage from './pages/NewsPage'
 import TeamPage from './pages/TeamPage'
 import ContactPage from './pages/ContactPage'
+import ImpressumPage from './pages/ImprintPage'
+import DatenschutzPage from './pages/DataPolicyPage'
 import './index.css'
 
 function AppInner() {
@@ -21,6 +23,8 @@ function AppInner() {
         <Route path="/news" element={<NewsPage />} />
         <Route path="/team" element={<TeamPage />} />
         <Route path="/contact" element={<ContactPage />} />
+        <Route path="/impressum" element={<ImprintPage />} />
+        <Route path="/datenschutz" element={<DataPolicyPage />} />
       </Routes>
     </div>
   )
