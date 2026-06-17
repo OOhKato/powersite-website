@@ -27,9 +27,9 @@ export default function Footer() {
           © 2026 Powerwise AI
           <br />
           <br />
-          <Link to="/impressum" className={`transition-colors hover:text-green-500 ${legal}`}>Imprint</Link>
+          <Link to="/imprint" className={`transition-colors hover:text-green-500 ${legal}`}>Imprint</Link>
           <span className={legal}> · </span>
-          <Link to="/datenschutz" className={`transition-colors hover:text-green-500 ${legal}`}>Data Policy</Link>
+          <Link to="/data-policy" className={`transition-colors hover:text-green-500 ${legal}`}>Data Policy</Link>
         </div>
       </PageContainer>
     </footer>
