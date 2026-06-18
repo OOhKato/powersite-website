@@ -76,10 +76,15 @@ export default function Hero() {
 
         {/* Stats */}
         <div className={`border rounded-2xl p-4 sm:p-6 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 ${statBorder}`}>
-          {['Placeholder Stat', 'Placeholder Stat', 'Placeholder Stat', 'Placeholder Stat'].map((label, i) => (
+          {[
+            { value: '€2.9B', label: 'Total Addressable Market' },
+            { value: '19 TWh', label: 'Energy Curtailed in Germany' },
+            { value: '3×', label: 'Faster with Quantum AI' },
+            { value: '2 wks', label: 'To Full Onboarding' },
+          ].map((stat, i) => (
             <div key={i} className="text-center">
-              <div className="text-2xl sm:text-3xl font-black text-green-500 green-glow mb-1">—</div>
-              <div className={`text-xs ${statLabel}`}>{label}</div>
+              <div className="text-2xl sm:text-3xl font-black text-green-500 green-glow mb-1">{stat.value}</div>
+              <div className={`text-xs ${statLabel}`}>{stat.label}</div>
             </div>
           ))}
         </div>
