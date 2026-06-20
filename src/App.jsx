@@ -1,34 +1,17 @@
-import { ThemeProvider, useTheme } from './ThemeContext'
-import Navbar from './components/Navbar'
-import Hero from './components/Hero'
-import Timeline from './components/Timeline'
-import Solutions from './components/Solution'
-import News from './components/News'
-import Team from './components/Team'
-import Contact from './components/Contact'
-import Footer from './components/Footer'
-import './index.css'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import SolutionsPage from "./pages/SolutionsPage";
+import ContactPage from "./pages/ContactPage";
 
-function AppInner() {
-  const { light } = useTheme()
-  return (
-    <div className={`min-h-screen transition-colors duration-300 ${light ? 'bg-white light-mode' : 'bg-black'}`}>
-      <Navbar />
-      <Hero />
-      <Timeline />
-      <Solutions />
-      <News />
-      <Team />
-      <Contact />
-      <Footer />
-    </div>
-  )
+function App() {
+    return (
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<h1>Home</h1>} />
+                <Route path="/solutions" element={<SolutionsPage />} />
+                <Route path="/contact" element={<ContactPage />} />
+            </Routes>
+        </BrowserRouter>
+    );
 }
 
-export default function App() {
-  return (
-    <ThemeProvider>
-      <AppInner />
-    </ThemeProvider>
-  )
-}
+export default App;
