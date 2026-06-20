@@ -23,19 +23,53 @@ This student project focuses on redesigning and rebuilding the Powerwise.site we
 ```
 src/
 ├── components/
-│   ├── Navbar.jsx       # Navigation with Light/Dark toggle
-│   ├── Hero.jsx         # Landing section
-│   ├── Timeline.jsx     # Project milestones
-│   ├── Solution.jsx     # Solutions overview
-│   ├── News.jsx         # News & updates
-│   ├── Team.jsx         # Team members
-│   ├── Contact.jsx      # Contact form
-│   └── Footer.jsx       # Footer
-├── ThemeContext.jsx      # Light/Dark mode state
-├── App.jsx
+│   ├── home/                        # Homepage-specific sections
+│   │   ├── Hero.jsx                 # Landing section with DarkVeil background
+│   │   ├── Problem.jsx              # Problem statement (3-card MagicBento)
+│   │   ├── AboutUs.jsx              # Who We Are (4-card MagicBento)
+│   │   ├── Approach.jsx             # Why Powerwise (7-card bento grid)
+│   │   ├── OurProcess.jsx           # 4-step process (Demo → Autonomy)
+│   │   └── MarketOpportunity.jsx    # TAM/SAM/SOM cards (unused, kept for reuse)
+│   ├── DarkVeil.jsx                 # WebGL animated background (ogl/GLSL)
+│   ├── DarkVeil.css
+│   ├── MagicBento.jsx               # Interactive card grid with spotlight & particles
+│   ├── MagicBento.css
+│   ├── InvestorCTA.jsx              # Pitch deck CTA + Use of Funds panel
+│   ├── Navbar.jsx                   # Navigation with Light/Dark toggle
+│   ├── Footer.jsx                   # Footer with cooperation logos (GZDN, THD)
+│   ├── Section.jsx                  # PageSection / PageContainer / SectionHeader helpers
+│   ├── SubpageLayout.jsx            # Navbar + Footer wrapper for subpages
+│   ├── ScrollToTop.jsx              # Scroll-to-top on route change
+│   ├── Sidebar.jsx
+│   ├── Contact.jsx                  # Contact form
+│   ├── Team.jsx                     # Team members (used on /team)
+│   ├── News.jsx                     # News & updates (used on /news)
+│   ├── Solution.jsx                 # Solutions overview (used on /solutions)
+│   ├── Timeline.jsx                 # Project milestones (used on /timeline)
+│   └── BusinessModel.jsx            # Business model (unused, kept for reuse)
+├── pages/
+│   ├── HomePage.jsx                 # / → Hero, Problem, AboutUs, Approach, OurProcess
+│   ├── InvestorsPage.jsx            # /investors → MarketSize, Traction, InvestorCTA
+│   ├── TeamPage.jsx                 # /team
+│   ├── SolutionsPage.jsx            # /solutions
+│   ├── NewsPage.jsx                 # /news
+│   ├── TimelinePage.jsx             # /timeline
+│   ├── ContactPage.jsx              # /contact
+│   ├── ImprintPage.jsx              # /imprint
+│   └── DataPolicyPage.jsx           # /data-policy
+├── assets/
+│   ├── logos/
+│   │   ├── gzdn.svg                 # Gründerzentrum Deggendorf Nord
+│   │   └── thd.svg                  # Technische Hochschule Deggendorf
+│   └── hero.png
+├── ThemeContext.jsx                  # Light/Dark mode state
+├── nav.js                           # Shared navLinks & sidebarLinks
+├── App.jsx                          # Router + ThemeProvider
 ├── main.jsx
 └── index.css
 ```
+
+
 
 ## Getting Started
 
