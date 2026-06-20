@@ -450,8 +450,8 @@ const GlobalSpotlight = ({
   return null;
 };
 
-const BentoCardGrid = ({ children, gridRef }) => (
-  <div className="card-grid bento-section" ref={gridRef}>
+const BentoCardGrid = ({ children, gridRef, layout = 'bento' }) => (
+  <div className={`card-grid bento-section card-grid--${layout}`} ref={gridRef}>
     {children}
   </div>
 );
@@ -472,6 +472,8 @@ const useMobileDetection = () => {
 };
 
 const MagicBento = ({
+  cards = cardData,
+  layout = 'bento',
   textAutoHide = true,
   enableStars = true,
   enableSpotlight = true,
@@ -500,8 +502,8 @@ const MagicBento = ({
         />
       )}
 
-      <BentoCardGrid gridRef={gridRef}>
-        {cardData.map((card, index) => {
+      <BentoCardGrid gridRef={gridRef} layout={layout}>
+        {cards.map((card, index) => {
           const baseClassName = `magic-bento-card ${textAutoHide ? 'magic-bento-card--text-autohide' : ''} ${enableBorderGlow ? 'magic-bento-card--border-glow' : ''} ${card.featured ? 'magic-bento-card--featured' : ''}`;
           const cardProps = {
             className: baseClassName,
@@ -665,4 +667,5 @@ const MagicBento = ({
   );
 };
 
+export { ParticleCard, GlobalSpotlight };
 export default MagicBento;

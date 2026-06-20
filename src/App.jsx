@@ -9,6 +9,7 @@ import TeamPage from './pages/TeamPage'
 import ContactPage from './pages/ContactPage'
 import ImprintPage from './pages/ImprintPage'
 import DataPolicyPage from './pages/DataPolicyPage'
+import InvestorsPage from './pages/InvestorsPage'
 import './index.css'
 
 function AppInner() {
@@ -25,6 +26,7 @@ function AppInner() {
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/imprint" element={<ImprintPage />} />
         <Route path="/data-policy" element={<DataPolicyPage />} />
+        <Route path="/investors" element={<InvestorsPage />} />
       </Routes>
     </div>
   )

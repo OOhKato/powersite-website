@@ -1,5 +1,5 @@
-import { useTheme } from '../ThemeContext'
-import { PageSection, PageContainer, SectionHeader } from './Section'
+import { useTheme } from '../../ThemeContext'
+import { PageSection, PageContainer, SectionHeader } from '../Section'
 
 const markets = [
   {
@@ -33,6 +33,7 @@ export default function MarketOpportunity({ standalone = false }) {
   const featuredCard = light
     ? 'bg-green-500/[0.06] border-green-500/50 shadow-sm'
     : 'bg-green-500/[0.06] border-green-500/45'
+  const valueColor = light ? 'text-green-600' : 'text-green-500'
 
   return (
     <PageSection id="market" standalone={standalone} className={`relative ${standalone ? '' : 'border-t'} ${sectionBorder}`}>
@@ -57,7 +58,7 @@ export default function MarketOpportunity({ standalone = false }) {
           {markets.map((m) => (
             <div key={m.label}
               className={`group relative overflow-hidden rounded-2xl border p-6 md:p-8 text-center card-glow transition-all duration-300 ${m.featured ? featuredCard : card}`}>
-              <div className={`text-4xl sm:text-5xl font-black mb-2 text-green-500 ${m.featured ? 'green-glow' : ''}`}>{m.value}</div>
+              <div className={`text-4xl sm:text-5xl font-black mb-2 ${valueColor} ${m.featured ? 'green-glow' : ''}`}>{m.value}</div>
               <div className={`mb-3 text-xs font-semibold uppercase tracking-widest text-green-600`}>{m.label}</div>
               <p className={`text-sm leading-relaxed ${body}`}>{m.description}</p>
             </div>
@@ -65,7 +66,7 @@ export default function MarketOpportunity({ standalone = false }) {
         </div>
 
         <p className={`mx-auto mt-8 max-w-2xl text-center text-sm leading-relaxed ${body}`}>
-          Through our founder’s network, Chile becomes our first expansion market, a country
+          Through our founder's network, Chile becomes our first expansion market, a country
           with more than 1.9 TW of renewable potential.
         </p>
       </PageContainer>

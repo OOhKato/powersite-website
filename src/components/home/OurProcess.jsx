@@ -1,5 +1,5 @@
-import { useTheme } from '../ThemeContext'
-import { PageSection, PageContainer, SectionHeader } from './Section'
+import { useTheme } from '../../ThemeContext'
+import { PageSection, PageContainer, SectionHeader } from '../Section'
 
 const steps = [
   {
@@ -34,7 +34,7 @@ export default function OurProcess({ standalone = false }) {
   const card = light
     ? 'bg-white border-green-500/25 hover:border-green-500/50 shadow-sm'
     : 'bg-black border-green-500/15 hover:border-green-500/40'
-  const numColor = light ? 'text-green-500/25 group-hover:text-green-500/40' : 'text-green-500/15 group-hover:text-green-500/30'
+  const numColor = light ? 'text-green-600 group-hover:text-green-700' : 'text-green-500/60 group-hover:text-green-500/90'
   const connector = light ? 'bg-green-500/25' : 'bg-green-500/15'
 
   return (

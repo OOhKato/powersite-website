@@ -1,6 +1,6 @@
-import { useTheme } from '../ThemeContext'
-import { PageSection, SectionHeader } from './Section'
-import MagicBento from './MagicBento'
+import { useTheme } from '../../ThemeContext'
+import { PageSection, SectionHeader } from '../Section'
+import MagicBento from '../MagicBento'
 
 export default function Approach({ standalone = false }) {
   const { light } = useTheme()
