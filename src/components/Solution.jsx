@@ -13,9 +13,6 @@ export default function Solution() {
                     </p>
 
                     <div className="hero-buttons">
-                        <a className="btn" href="/contact">
-                            Request Demo
-                        </a>
 
                         <a className="btn secondary" href="/contact">
                             Request Pitch Deck
