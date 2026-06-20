@@ -1,63 +1,123 @@
-import { useTheme } from '../ThemeContext'
+export default function Solution() {
+    return (
+        <>
+            {/* HERO */}
+            <section className="hero">
+                <div className="container">
 
-const solutions = [
-  { number: '01', title: 'Solution Title', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Placeholder text for this solution card.' },
-  { number: '02', title: 'Solution Title', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Placeholder text for this solution card.' },
-  { number: '03', title: 'Solution Title', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Placeholder text for this solution card.' },
-  { number: '04', title: 'Solution Title', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Placeholder text for this solution card.' },
-]
+                    <h1>Autonomous Energy Intelligence for the Power-to-X Era</h1>
 
-export default function Solutions() {
-  const { light } = useTheme()
+                    <p>
+                        Powerwise turns renewable energy systems into self-optimizing assets
+                        that continuously reduce costs and maximize output using AI decision engines.
+                    </p>
 
-  const sectionBorder = light ? 'border-green-500/20' : 'border-green-500/8'
-  const heading = light ? 'text-gray-900' : 'text-white'
-  const body = light ? 'text-gray-500' : 'text-gray-500'
-  const badge = light ? 'border-green-500/40 bg-green-500/8 text-green-700' : 'border-green-500/30 bg-green-500/5 text-green-400'
-  const card = light
-    ? 'bg-white border-green-500/25 hover:border-green-500/50 shadow-sm'
-    : 'bg-black border-green-500/15 hover:border-green-500/40'
-  const numColor = light ? 'text-green-500/20 group-hover:text-green-500/35' : 'text-green-500/15 group-hover:text-green-500/25'
+                    <div className="hero-buttons">
+                        <a className="btn" href="/contact">
+                            Request Demo
+                        </a>
 
-  return (
-    <section id="solutions" className={`py-24 px-6 relative border-t ${sectionBorder}`}>
-      <div className="absolute inset-0 grid-bg opacity-20" />
+                        <a className="btn secondary" href="/contact">
+                            Request Pitch Deck
+                        </a>
+                    </div>
 
-      <div className="max-w-7xl mx-auto relative z-10">
-        <div className="max-w-2xl mb-14">
-          <span className={`inline-block text-xs font-bold uppercase tracking-widest border px-3 py-1 rounded-full mb-4 ${badge}`}>
-            Solutions
-          </span>
-          <h2 className={`text-4xl md:text-5xl font-black mb-4 ${heading}`}>
-            What We <span className="text-green-500">Offer</span>
-          </h2>
-          <p className={`text-base leading-relaxed ${body}`}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Placeholder subtitle for the solutions section goes here.
-          </p>
-        </div>
+                </div>
+            </section>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-          {solutions.map((s) => (
-            <div key={s.number}
-              className={`group relative p-8 rounded-2xl border card-glow transition-all duration-300 overflow-hidden ${card}`}>
-              <div className="absolute top-0 right-0 w-20 h-20 pointer-events-none">
-                <div className="absolute top-0 right-0 w-px h-12 bg-gradient-to-b from-green-500/30 to-transparent" />
-                <div className="absolute top-0 right-0 w-12 h-px bg-gradient-to-l from-green-500/30 to-transparent" />
-              </div>
-              <div className={`text-5xl font-black mb-5 transition-colors ${numColor}`}>{s.number}</div>
-              <h3 className={`font-bold text-xl mb-3 ${heading}`}>{s.title}</h3>
-              <p className={`text-sm leading-relaxed mb-5 ${body}`}>{s.description}</p>
-              <a href="#contact"
-                className="inline-flex items-center gap-2 text-green-600 text-sm font-semibold hover:gap-3 transition-all">
-                Learn more
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </a>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  )
+            {/* PROBLEM */}
+            <section className="section">
+                <div className="container">
+
+                    <h2>The Problem</h2>
+
+                    <div className="grid">
+
+                        <div className="card">
+                            <h3>Energy Waste</h3>
+                            <p>Renewable systems lose value due to poor timing and inefficiencies.</p>
+                        </div>
+
+                        <div className="card">
+                            <h3>Data Overload</h3>
+                            <p>Operators cannot process millions of signals in real time.</p>
+                        </div>
+
+                        <div className="card">
+                            <h3>Manual Decisions</h3>
+                            <p>Human operators cannot react fast enough to market changes.</p>
+                        </div>
+
+                    </div>
+
+                </div>
+            </section>
+
+            {/* SOLUTION */}
+            <section className="section">
+                <div className="container">
+
+                    <h2>Our Solution</h2>
+
+                    <p>
+                        Powerwise uses AI models to forecast energy production, market demand,
+                        and grid conditions — then automatically executes optimal decisions.
+                    </p>
+
+                </div>
+            </section>
+
+            {/* HOW IT WORKS */}
+            <section className="section">
+                <div className="container">
+
+                    <h2>How It Works</h2>
+
+                    <div className="grid">
+
+                        <div className="card">
+                            <h3>1. Connect</h3>
+                            <p>Integrate energy assets and data sources.</p>
+                        </div>
+
+                        <div className="card">
+                            <h3>2. Analyze</h3>
+                            <p>AI processes live and historical system data.</p>
+                        </div>
+
+                        <div className="card">
+                            <h3>3. Optimize</h3>
+                            <p>System calculates best energy strategy in real time.</p>
+                        </div>
+
+                        <div className="card">
+                            <h3>4. Execute</h3>
+                            <p>Automated decisions are applied instantly.</p>
+                        </div>
+
+                    </div>
+
+                </div>
+            </section>
+
+            {/* DEMO */}
+            <section className="section demo">
+                <div className="container">
+
+                    <h2>Live System Demo</h2>
+
+                    <iframe
+                        src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                    />
+
+                    <div style={{ marginTop: "20px" }}>
+                        <a className="btn" href="/contact">
+                            Request Live Demo Access
+                        </a>
+                    </div>
+
+                </div>
+            </section>
+        </>
+    );
 }
