@@ -1,29 +1,31 @@
 import { Link } from 'react-router-dom'
-import { useTheme } from '../ThemeContext'
-import { PageContainer } from './Section'
-import DarkVeil from './DarkVeil'
+import { useTheme } from '../../ThemeContext'
+import { PageContainer } from '../Section'
+import DarkVeil from '../DarkVeil'
 
 export default function Hero() {
   const { light } = useTheme()
 
   const heading = light ? 'text-gray-900' : 'text-white'
   const body = light ? 'text-gray-600' : 'text-gray-400'
-  const statBorder = light ? 'border-green-500/25 bg-green-500/5' : 'border-green-500/15 bg-green-500/[0.03]'
+  const statBorder = light ? 'border-green-500/30 bg-green-500/[0.06]' : 'border-green-500/15 bg-green-500/[0.03]'
   const statLabel = light ? 'text-gray-500' : 'text-gray-500'
+  // Green numbers read poorly on white, so darken them a touch in light mode.
+  const statValue = light ? 'text-green-600' : 'text-green-500'
 
   // Hue shift that rotates the DarkVeil's default violet/magenta palette onto
-  // the site's green. In light mode the veil is dialed way down so the white
-  // theme stays dominant and the effect reads as a subtle green tint.
+  // the site's green. Stronger in light mode so the animation stays visible
+  // against the white background.
   const veilHueShift = 115
-  const veilOpacity = light ? 0.28 : 0.9
+  // In light mode invert the veil so its dark base turns white while the green
+  // animation is preserved (invert + hue-rotate keeps the hue, flips lightness).
+  const veilOpacity = light ? 0.5 : 0.9
+  const veilFilter = light ? 'invert(1) hue-rotate(180deg)' : 'none'
 
   return (
     <section id="home" className="relative flex w-full min-h-screen flex-col items-center justify-center overflow-hidden pt-20 sm:pt-24 pb-12 sm:pb-16">
       {/* Animated DarkVeil background (green-shifted) */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{ opacity: veilOpacity }}
-      >
+      <div className="absolute inset-0 pointer-events-none" style={{ opacity: veilOpacity, filter: veilFilter }}>
         <DarkVeil
           hueShift={veilHueShift}
           speed={0.5}
@@ -36,7 +38,7 @@ export default function Hero() {
       </div>
       <div className="absolute inset-0 grid-bg pointer-events-none" />
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden">
-        <div className={`w-4/5 max-w-[600px] aspect-square rounded-full blur-3xl ${light ? 'bg-green-500/5' : 'bg-green-500/8'}`} />
+        <div className={`w-4/5 max-w-[600px] aspect-square rounded-full blur-3xl ${light ? 'bg-green-500/8' : 'bg-green-500/8'}`} />
       </div>
 
       <PageContainer className="relative z-10">
@@ -83,7 +85,7 @@ export default function Hero() {
             { value: '2 wks', label: 'To Full Onboarding' },
           ].map((stat, i) => (
             <div key={i} className="text-center">
-              <div className="text-2xl sm:text-3xl font-black text-green-500 green-glow mb-1">{stat.value}</div>
+              <div className={`text-2xl sm:text-3xl font-black green-glow mb-1 ${statValue}`}>{stat.value}</div>
               <div className={`text-xs ${statLabel}`}>{stat.label}</div>
             </div>
           ))}

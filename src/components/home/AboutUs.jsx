@@ -1,7 +1,8 @@
-import { useTheme } from '../ThemeContext'
-import { PageSection, PageContainer, SectionHeader } from './Section'
+import { useTheme } from '../../ThemeContext'
+import { PageSection, PageContainer, SectionHeader } from '../Section'
+import MagicBento from '../MagicBento'
 
-const highlights = [
+const aboutCards = [
   {
     title: 'AI-as-a-Service',
     description: 'An AI-as-a-Service startup transforming renewable energy management through intelligent optimization.',
@@ -27,9 +28,6 @@ export default function AboutUs({ standalone = false }) {
   const heading = light ? 'text-gray-900' : 'text-white'
   const body = light ? 'text-gray-500' : 'text-gray-500'
   const badge = light ? 'border-green-500/40 bg-green-500/8 text-green-700' : 'border-green-500/30 bg-green-500/5 text-green-400'
-  const card = light
-    ? 'bg-white border-green-500/25 hover:border-green-500/50 shadow-sm'
-    : 'bg-black border-green-500/15 hover:border-green-500/40'
 
   return (
     <PageSection id="about" standalone={standalone} className={`relative ${standalone ? '' : 'border-t'} ${sectionBorder}`}>
@@ -41,7 +39,7 @@ export default function AboutUs({ standalone = false }) {
             About Us
           </span>
           <h2 className={`mb-4 text-3xl sm:text-4xl md:text-5xl font-black ${heading}`}>
-            Who We <span className="text-green-500">Are</span>
+            <span className="text-green-500">Who</span> We Are
           </h2>
           <p className={`mx-auto max-w-3xl text-base sm:text-lg leading-relaxed ${body}`}>
             Powerwise empowers energy operators to make data-driven decisions in real time,
@@ -50,19 +48,17 @@ export default function AboutUs({ standalone = false }) {
           </p>
         </SectionHeader>
 
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4 md:gap-6">
-          {highlights.map((h) => (
-            <div key={h.title}
-              className={`group relative overflow-hidden rounded-2xl border p-6 card-glow transition-all duration-300 ${card}`}>
-              <div className="absolute top-0 right-0 w-20 h-20 pointer-events-none">
-                <div className="absolute top-0 right-0 w-px h-12 bg-gradient-to-b from-green-500/30 to-transparent" />
-                <div className="absolute top-0 right-0 w-12 h-px bg-gradient-to-l from-green-500/30 to-transparent" />
-              </div>
-              <h3 className={`font-bold text-lg mb-3 ${heading}`}>{h.title}</h3>
-              <p className={`text-sm leading-relaxed ${body}`}>{h.description}</p>
-            </div>
-          ))}
-        </div>
+        <MagicBento
+          cards={aboutCards}
+          layout="cols-4"
+          textAutoHide={false}
+          glowColor="34, 197, 94"
+          spotlightRadius={300}
+          particleCount={10}
+          enableTilt={false}
+          clickEffect
+          enableMagnetism
+        />
       </PageContainer>
     </PageSection>
   )

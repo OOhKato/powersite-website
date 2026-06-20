@@ -1,11 +1,9 @@
 import Navbar from '../components/Navbar'
-import Hero from '../components/Hero'
-import Problem from '../components/Problem'
-import AboutUs from '../components/AboutUs'
-import Approach from '../components/Approach'
-import MarketOpportunity from '../components/MarketOpportunity'
-import OurProcess from '../components/OurProcess'
-import InvestorCTA from '../components/InvestorCTA'
+import Hero from '../components/home/Hero'
+import Problem from '../components/home/Problem'
+import AboutUs from '../components/home/AboutUs'
+import Approach from '../components/home/Approach'
+import OurProcess from '../components/home/OurProcess'
 import Footer from '../components/Footer'
 
 export default function HomePage() {
@@ -17,9 +15,7 @@ export default function HomePage() {
         <Problem />
         <AboutUs />
         <Approach />
-        <MarketOpportunity />
         <OurProcess />
-        <InvestorCTA />
       </main>
       <Footer />
     </>
