@@ -1,65 +1,108 @@
-import { Link } from 'react-router-dom'
-import { useTheme } from '../ThemeContext'
-import { PageSection, PageContainer, SectionHeader } from './Section'
+import { Link } from "react-router-dom";
+import { useTheme } from "../ThemeContext";
+import BusinessModel from "./BusinessModel";
 
-const solutions = [
-  { number: '01', title: 'Solution Title', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Placeholder text for this solution card.' },
-  { number: '02', title: 'Solution Title', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Placeholder text for this solution card.' },
-  { number: '03', title: 'Solution Title', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Placeholder text for this solution card.' },
-  { number: '04', title: 'Solution Title', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Placeholder text for this solution card.' },
-]
+export default function Solution() {
+    const { light } = useTheme();
 
-export default function Solutions({ standalone = false }) {
-  const { light } = useTheme()
+    const heading = light ? "text-gray-900" : "text-white";
+    const body = light ? "text-gray-500" : "text-gray-400";
+    const card = light
+        ? "bg-white border-gray-200"
+        : "bg-black border-gray-800";
 
-  const sectionBorder = light ? 'border-green-500/20' : 'border-green-500/8'
-  const heading = light ? 'text-gray-900' : 'text-white'
-  const body = light ? 'text-gray-500' : 'text-gray-500'
-  const badge = light ? 'border-green-500/40 bg-green-500/8 text-green-700' : 'border-green-500/30 bg-green-500/5 text-green-400'
-  const card = light
-    ? 'bg-white border-green-500/25 hover:border-green-500/50 shadow-sm'
-    : 'bg-black border-green-500/15 hover:border-green-500/40'
-  const numColor = light ? 'text-green-500/20 group-hover:text-green-500/35' : 'text-green-500/15 group-hover:text-green-500/25'
+    return (
+        <div className="w-full max-w-7xl mx-auto px-6 py-20 space-y-24">
 
-  return (
-    <PageSection id="solutions" standalone={standalone} className={`relative ${standalone ? '' : 'border-t'} ${sectionBorder}`}>
-      <div className="absolute inset-0 grid-bg opacity-20 pointer-events-none" />
+            {/* HERO */}
+            <section className="space-y-6 text-center flex flex-col items-center">
+                <h1 className={`text-4xl md:text-6xl font-bold ${heading}`}>
+                    Autonomous Energy Intelligence for the Power-to-X Era
+                </h1>
 
-      <PageContainer className="relative z-10">
-        <SectionHeader>
-          <span className={`inline-block mb-4 text-xs font-bold uppercase tracking-widest border px-3 py-1 rounded-full ${badge}`}>
-            Solutions
-          </span>
-          <h2 className={`mb-4 text-3xl sm:text-4xl md:text-5xl font-black ${heading}`}>
-            What We <span className="text-green-500">Offer</span>
-          </h2>
-          <p className={`mx-auto max-w-2xl text-base leading-relaxed ${body}`}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Placeholder subtitle for the solutions section goes here.
-          </p>
-        </SectionHeader>
+                <p className={`max-w-2xl ${body}`}>
+                    Powerwise turns renewable energy systems into self-optimizing assets
+                    that continuously reduce costs and maximize output using AI decision engines.
+                </p>
 
-        <div className="grid grid-cols-1 gap-5 md:grid-cols-2 md:gap-6 lg:gap-8">
-          {solutions.map((s) => (
-            <div key={s.number}
-              className={`group relative overflow-hidden rounded-2xl border p-6 md:p-8 text-center card-glow transition-all duration-300 ${card}`}>
-              <div className="absolute top-0 right-0 w-20 h-20 pointer-events-none">
-                <div className="absolute top-0 right-0 w-px h-12 bg-gradient-to-b from-green-500/30 to-transparent" />
-                <div className="absolute top-0 right-0 w-12 h-px bg-gradient-to-l from-green-500/30 to-transparent" />
-              </div>
-              <div className={`text-5xl font-black mb-4 transition-colors ${numColor}`}>{s.number}</div>
-              <h3 className={`font-bold text-xl mb-3 ${heading}`}>{s.title}</h3>
-              <p className={`text-sm leading-relaxed mb-5 ${body}`}>{s.description}</p>
-              <Link to="/contact"
-                className="inline-flex items-center justify-center gap-2 text-green-600 text-sm font-semibold hover:gap-3 transition-all">
-                Learn more
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </Link>
-            </div>
-          ))}
+                <Link
+                    to="/contact"
+                    className="px-6 py-3 bg-green-500 text-black rounded-lg font-semibold hover:bg-green-400 transition"
+                >
+                    Request Pitch Deck
+                </Link>
+            </section>
+
+            {/* PROBLEM */}
+            <section className="space-y-6 text-center flex flex-col items-center">
+                <h2 className={`text-3xl ${heading}`}>The Problem</h2>
+
+                <div className="grid md:grid-cols-3 gap-6 w-full">
+                    {[
+                        ["Energy Waste", "Renewable systems lose value due to poor timing and inefficiencies."],
+                        ["Data Overload", "Operators cannot process millions of signals in real time."],
+                        ["Manual Decisions", "Human operators cannot react fast enough to market changes."]
+                    ].map(([title, text]) => (
+                        <div key={title} className={`p-6 rounded-xl border ${card}`}>
+                            <h3 className={heading}>{title}</h3>
+                            <p className={body}>{text}</p>
+                        </div>
+                    ))}
+                </div>
+            </section>
+
+            {/* SOLUTION */}
+            <section className="space-y-6 text-center flex flex-col items-center">
+                <h2 className={`text-3xl ${heading}`}>Our Solution</h2>
+
+                <p className={`max-w-3xl ${body}`}>
+                    Powerwise uses AI models to forecast energy production, market demand,
+                    and grid conditions — then automatically executes optimal decisions.
+                </p>
+            </section>
+
+            {/* HOW IT WORKS */}
+            <section className="space-y-6 text-center flex flex-col items-center">
+                <h2 className={`text-3xl ${heading}`}>How It Works</h2>
+
+                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
+                    {[
+                        ["1. Connect", "Integrate energy assets and data sources."],
+                        ["2. Analyze", "AI processes live and historical system data."],
+                        ["3. Optimize", "System calculates best energy strategy in real time."],
+                        ["4. Execute", "Automated decisions are applied instantly."]
+                    ].map(([title, text]) => (
+                        <div key={title} className="p-6 border border-gray-800 rounded-xl">
+                            <h3 className="text-green-400">{title}</h3>
+                            <p className={body}>{text}</p>
+                        </div>
+                    ))}
+                </div>
+            </section>
+
+            {/* DEMO */}
+            <section className="space-y-6 text-center flex flex-col items-center">
+                <h2 className={`text-3xl ${heading}`}>Live System Demo</h2>
+
+                <div className="max-w-3xl w-full">
+                    <iframe
+                        className="w-full aspect-video rounded-xl"
+                        src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                        title="Demo Video"
+                    />
+                </div>
+
+                <Link
+                    to="/contact"
+                    className="px-6 py-3 bg-green-500 text-black rounded-lg font-semibold hover:bg-green-400 transition"
+                >
+                    Request Live Demo Access
+                </Link>
+            </section>
+
+            {/* BUSINESS MODEL */}
+            <BusinessModel />
+
         </div>
-      </PageContainer>
-    </PageSection>
-  )
+    );
 }
