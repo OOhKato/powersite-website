@@ -6,27 +6,27 @@ import gzdnLogo from '../assets/logos/gzdn.svg'
 const members = [
   {
     initials: 'SA',
-    // photo: '/team/sebastian-arjona.jpg',
+    photo: '/team/sebastian-arjona.png',
     name: 'Dipl.-Ing. Sebastian Arjona',
     role: 'CEO & Co-Founder',
     bio: 'Energy systems engineer with a strong entrepreneurial background. Leads team and project management, sales, and marketing. Brings EU funding experience and an international network to drive Powerwise forward.',
-    linkedin: null, // e.g. 'https://www.linkedin.com/in/username'
+    linkedin: 'https://www.linkedin.com/in/sebastianarjonab/',
   },
   {
     initials: 'SB',
-    // photo: '/team/sreedevi-bhaskaran.jpg',
+    photo: '/team/sreedevi-bhaskaran.png',
     name: 'M.Sc. Sreedevi Bhaskaran',
     role: 'CTO & Co-Founder',
     bio: 'Technical lead with deep expertise in Quantum AI, non-supervised learning, and framework architecture. Drives product development and ensures data security across all Powerwise systems.',
-    linkedin: null,
+    linkedin: 'https://www.linkedin.com/in/sreedevibt/',
   },
   {
     initials: 'LK',
-    // photo: '/team/lukas-klein.jpg',
+    photo: '/team/lukas-klein.png',
     name: 'M.Sc. Lukas Klein',
     role: 'COO & Co-Founder',
     bio: 'Combines entrepreneurial experience with software development skills and a strong foundation in quantum computing and energy systems. Responsible for operations, front-end design, and data security.',
-    linkedin: null,
+    linkedin: 'https://www.linkedin.com/in/lukas-klein-707535274/',
   },
 ]
 
@@ -55,6 +55,7 @@ const partners = [
     description: 'University partner providing research infrastructure, scientific expertise, and engineering talent.',
     url: 'https://www.th-deg.de',
     logo: thdLogo,
+    logoTheme: 'dark',
   },
   {
     name: 'Gründerzentrum Deggendorf',
@@ -63,6 +64,7 @@ const partners = [
     description: 'Incubator providing office space, mentoring, and access to investor networks.',
     url: 'https://www.gruenderzentrum-niederbayern.de',
     logo: gzdnLogo,
+    logoTheme: 'light',
   },
 ]
 
@@ -148,7 +150,7 @@ export default function Team({ standalone = false }) {
               </div>
 
               {/* Name & role */}
-              <h3 className={`mb-1 font-bold text-base ${heading}`}>{m.name}</h3>
+              <h3 className={`mb-1 font-bold text-base min-h-12 flex items-center justify-center ${heading}`}>{m.name}</h3>
               <div className="mb-3 text-xs font-semibold uppercase tracking-wide text-green-600">
                 {m.role}
               </div>
@@ -230,7 +232,11 @@ export default function Team({ standalone = false }) {
                   <img
                     src={p.logo}
                     alt={p.name}
-                    className="max-h-12 max-w-[160px] object-contain"
+                    className={`max-h-12 max-w-[160px] object-contain transition-all ${
+                      (p.logoTheme === 'dark' && !light) || (p.logoTheme === 'light' && light)
+                        ? 'invert'
+                        : ''
+                    }`}
                     onError={(e) => {
                       e.currentTarget.style.display = 'none'
                       e.currentTarget.nextElementSibling.style.display = 'flex'
