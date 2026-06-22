@@ -1,4 +1,5 @@
 import { useTheme } from '../ThemeContext'
+import { PageSection, PageContainer, SectionHeader } from './Section'
 
 const articles = [
   { tag: 'Press Release', date: 'DD. MMM 20XX', title: 'Article Title Placeholder', excerpt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' },
@@ -6,7 +7,7 @@ const articles = [
   { tag: 'Update',        date: 'DD. MMM 20XX', title: 'Article Title Placeholder', excerpt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' },
 ]
 
-export default function News() {
+export default function News({ standalone = false }) {
   const { light } = useTheme()
 
   const sectionBg = light ? 'bg-gray-50' : 'bg-green-950/[0.03]'
@@ -25,38 +26,36 @@ export default function News() {
     : 'text-green-400 border-green-500/30 hover:bg-green-500/5'
 
   return (
-    <section id="news" className={`py-24 px-6 relative border-t ${sectionBorder} ${sectionBg}`}>
-      <div className="absolute inset-0 grid-bg opacity-15" />
+    <PageSection id="news" standalone={standalone} className={`relative ${standalone ? '' : 'border-t'} ${sectionBorder} ${sectionBg}`}>
+      <div className="absolute inset-0 grid-bg opacity-15 pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto relative z-10">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
-          <div>
-            <span className={`inline-block text-xs font-bold uppercase tracking-widest border px-3 py-1 rounded-full mb-4 ${badge}`}>
-              News
-            </span>
-            <h2 className={`text-4xl md:text-5xl font-black ${heading}`}>
-              Latest <span className="text-green-500">Updates</span>
-            </h2>
-          </div>
-          <a href="#" className={`text-sm font-semibold border px-4 py-2 rounded-lg transition-colors shrink-0 ${viewAll}`}>
+      <PageContainer className="relative z-10">
+        <SectionHeader>
+          <span className={`inline-block mb-4 text-xs font-bold uppercase tracking-widest border px-3 py-1 rounded-full ${badge}`}>
+            News
+          </span>
+          <h2 className={`mb-4 text-3xl sm:text-4xl md:text-5xl font-black ${heading}`}>
+            Latest <span className="text-green-500">Updates</span>
+          </h2>
+          <a href="#" className={`inline-flex items-center justify-center text-sm font-semibold border px-4 py-2 rounded-lg transition-colors ${viewAll}`}>
             View all →
           </a>
-        </div>
+        </SectionHeader>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 gap-5 md:grid-cols-2 md:gap-6 lg:grid-cols-3 lg:gap-8">
           {articles.map((a, i) => (
             <article key={i}
-              className={`group p-6 rounded-2xl border card-glow transition-all duration-300 flex flex-col ${card}`}>
-              <div className={`w-full h-40 rounded-xl border mb-5 flex items-center justify-center ${imgPlaceholder}`}>
+              className={`group flex flex-col items-center rounded-2xl border p-6 text-center card-glow transition-all duration-300 ${card}`}>
+              <div className={`mb-5 flex h-40 w-full items-center justify-center rounded-xl border ${imgPlaceholder}`}>
                 <span className="text-xs uppercase tracking-widest">Image Placeholder</span>
               </div>
-              <div className="flex items-center gap-3 mb-3">
+              <div className="mb-3 flex items-center justify-center gap-3">
                 <span className={`text-xs font-bold border px-2 py-0.5 rounded-md ${cardTag}`}>{a.tag}</span>
                 <span className={`text-xs ${cardDate}`}>{a.date}</span>
               </div>
-              <h3 className={`font-bold text-base mb-2 group-hover:text-green-600 transition-colors ${heading}`}>{a.title}</h3>
-              <p className={`text-sm leading-relaxed mb-5 flex-1 ${body}`}>{a.excerpt}</p>
-              <a href="#" className="inline-flex items-center gap-2 text-green-600 text-sm font-semibold hover:gap-3 transition-all">
+              <h3 className={`mb-2 font-bold text-base group-hover:text-green-600 transition-colors ${heading}`}>{a.title}</h3>
+              <p className={`mb-5 flex-1 text-sm leading-relaxed ${body}`}>{a.excerpt}</p>
+              <a href="#" className="inline-flex items-center justify-center gap-2 text-green-600 text-sm font-semibold hover:gap-3 transition-all">
                 Read more
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -65,7 +64,7 @@ export default function News() {
             </article>
           ))}
         </div>
-      </div>
-    </section>
+      </PageContainer>
+    </PageSection>
   )
 }
