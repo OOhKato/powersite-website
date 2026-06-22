@@ -1,34 +1,43 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { ThemeProvider, useTheme } from './ThemeContext'
-import Navbar from './components/Navbar'
-import Hero from './components/Hero'
-import Timeline from './components/Timeline'
-import Solutions from './components/Solution'
-import News from './components/News'
-import Team from './components/Team'
-import Contact from './components/Contact'
-import Footer from './components/Footer'
+import ScrollToTop from './components/ScrollToTop'
+import HomePage from './pages/HomePage'
+import TimelinePage from './pages/TimelinePage'
+import SolutionsPage from './pages/SolutionsPage'
+import NewsPage from './pages/NewsPage'
+import TeamPage from './pages/TeamPage'
+import ContactPage from './pages/ContactPage'
+import ImprintPage from './pages/ImprintPage'
+import DataPolicyPage from './pages/DataPolicyPage'
+import InvestorsPage from './pages/InvestorsPage'
 import './index.css'
 
 function AppInner() {
   const { light } = useTheme()
   return (
-    <div className={`min-h-screen transition-colors duration-300 ${light ? 'bg-white light-mode' : 'bg-black'}`}>
-      <Navbar />
-      <Hero />
-      <Timeline />
-      <Solutions />
-      <News />
-      <Team />
-      <Contact />
-      <Footer />
+    <div className={`w-full min-h-screen overflow-x-clip transition-colors duration-300 ${light ? 'bg-white light-mode' : 'bg-black'}`}>
+      <ScrollToTop />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/timeline" element={<TimelinePage />} />
+        <Route path="/solutions" element={<SolutionsPage />} />
+        <Route path="/news" element={<NewsPage />} />
+        <Route path="/team" element={<TeamPage />} />
+        <Route path="/contact" element={<ContactPage />} />
+        <Route path="/imprint" element={<ImprintPage />} />
+        <Route path="/data-policy" element={<DataPolicyPage />} />
+        <Route path="/investors" element={<InvestorsPage />} />
+      </Routes>
     </div>
   )
 }
 
 export default function App() {
   return (
-    <ThemeProvider>
-      <AppInner />
-    </ThemeProvider>
+    <BrowserRouter>
+      <ThemeProvider>
+        <AppInner />
+      </ThemeProvider>
+    </BrowserRouter>
   )
 }

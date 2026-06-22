@@ -1,59 +1,108 @@
 import { useTheme } from '../ThemeContext'
+import { PageSection, PageContainer, SectionHeader } from './Section'
 
 const events = [
-  { year: '20XX', title: 'Milestone Title', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Placeholder description for this milestone.' },
-  { year: '20XX', title: 'Milestone Title', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Placeholder description for this milestone.' },
-  { year: '20XX', title: 'Milestone Title', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Placeholder description for this milestone.' },
-  { year: '20XX', title: 'Milestone Title', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Placeholder description for this milestone.' },
-  { year: '20XX', title: 'Milestone Title', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Placeholder description for this milestone.' },
+  {
+    quarter: '2025 Q3',
+    title: 'Initial Founding Idea & Problem Validation',
+    description: 'Validation of challenges in the field of hydrogen and PtX optimization.',
+    done: true,
+  },
+  {
+    quarter: '2025 Q4',
+    title: 'Business Model & Technical Design',
+    description: 'Development of the business model, initial pilot partner discussions and technical platform conception.',
+    done: true,
+  },
+  {
+    quarter: '2026 Q2',
+    title: 'Proof-of-Concept Preparation',
+    description: 'Further development of the MVP concept and alignment with advisors and partners.',
+    done: false,
+  },
+  {
+    quarter: '2027',
+    title: 'Start of MVP Development',
+    description: 'Beginning of pilot preparation and validation with real or synthetic operational data.',
+    done: false,
+  },
 ]
 
-export default function Timeline() {
+export default function Timeline({ standalone = false }) {
   const { light } = useTheme()
 
   const sectionBorder = light ? 'border-green-500/20' : 'border-green-500/8'
   const heading = light ? 'text-gray-900' : 'text-white'
   const body = light ? 'text-gray-500' : 'text-gray-500'
-  const card = light
-    ? 'bg-white border-green-500/25 hover:border-green-500/50 shadow-sm'
-    : 'bg-black border-green-500/15 hover:border-green-500/35'
+  const muted = light ? 'text-gray-400' : 'text-gray-600'
+  const badge = light ? 'border-green-500/40 bg-green-500/8 text-green-700' : 'border-green-500/30 bg-green-500/5 text-green-400'
+  const lineColor = light ? 'bg-green-500/20' : 'bg-green-500/15'
+  const doneCard = light
+    ? 'bg-white border-green-500/40 shadow-sm'
+    : 'bg-black border-green-500/30'
+  const upcomingCard = light
+    ? 'bg-gray-50 border-green-500/15 shadow-sm'
+    : 'bg-black border-green-500/8'
 
   return (
-    <section id="timeline" className={`py-24 px-6 relative border-t ${sectionBorder}`}>
-      <div className="absolute inset-0 grid-bg opacity-20" />
+    <PageSection id="timeline" standalone={standalone} className={`relative ${standalone ? '' : 'border-t'} ${sectionBorder}`}>
+      <div className="absolute inset-0 grid-bg opacity-20 pointer-events-none" />
 
-      <div className="max-w-4xl mx-auto relative z-10">
-        <div className="text-center mb-16">
-          <span className={`inline-block text-xs font-bold uppercase tracking-widest text-green-600 border px-3 py-1 rounded-full mb-4 ${light ? 'border-green-500/40 bg-green-500/8' : 'border-green-500/30 bg-green-500/5'}`}>
+      <PageContainer className="relative z-10">
+        <SectionHeader>
+          <span className={`inline-block mb-4 text-xs font-bold uppercase tracking-widest border px-3 py-1 rounded-full ${badge}`}>
             Timeline
           </span>
-          <h2 className={`text-4xl md:text-5xl font-black mb-4 ${heading}`}>
+          <h2 className={`mb-4 text-3xl sm:text-4xl md:text-5xl font-black ${heading}`}>
             Our <span className="text-green-500">Journey</span>
           </h2>
-          <p className={`text-base max-w-xl mx-auto ${body}`}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Placeholder subtitle for the timeline section.
+          <p className={`mx-auto max-w-xl text-base leading-relaxed ${body}`}>
+            From idea to autonomous optimization.
           </p>
-        </div>
+        </SectionHeader>
 
-        <div className="relative">
-          <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-green-500/5 via-green-500/30 to-green-500/5 md:-translate-x-1/2" />
-
-          <div className="space-y-10">
-            {events.map((e, i) => (
-              <div key={i} className={`relative flex flex-col md:flex-row gap-6 md:gap-0 items-start ${i % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
-                <div className={`md:w-[calc(50%-2rem)] ${i % 2 === 0 ? 'md:pr-10 md:text-right' : 'md:pl-10'} pl-14 md:pl-0`}>
-                  <div className={`p-5 rounded-xl border transition-colors ${card}`}>
-                    <div className="text-green-600 font-black text-sm mb-1">{e.year}</div>
-                    <h3 className={`font-bold text-base mb-2 ${heading}`}>{e.title}</h3>
-                    <p className={`text-sm leading-relaxed ${body}`}>{e.description}</p>
-                  </div>
+        <div className="mx-auto w-full max-w-2xl">
+          {events.map((e, i) => (
+            <div key={i} className="relative flex gap-6 pb-10 last:pb-0">
+              <div className="flex flex-col items-center">
+                <div className={`mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border-2 ${
+                  e.done
+                    ? 'border-green-500 bg-green-500'
+                    : light ? 'border-green-500/30 bg-white' : 'border-green-500/25 bg-black'
+                }`}>
+                  {e.done ? (
+                    <svg className="h-4 w-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+                    </svg>
+                  ) : (
+                    <div className="h-2 w-2 rounded-full bg-green-500/40" />
+                  )}
                 </div>
-                <div className="absolute left-6 md:left-1/2 top-5 md:-translate-x-1/2 w-3 h-3 rounded-full border-2 border-green-500 bg-green-500/20" />
+                {i < events.length - 1 && (
+                  <div className={`mt-2 w-0.5 flex-1 ${lineColor}`} />
+                )}
               </div>
-            ))}
-          </div>
+
+              <div className={`flex-1 rounded-xl border p-5 sm:p-6 mb-2 transition-colors ${e.done ? doneCard : upcomingCard}`}>
+                <div className="mb-2 flex items-center gap-3">
+                  <span className="text-xs font-black uppercase tracking-widest text-green-500">
+                    {e.quarter}
+                  </span>
+                  <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${
+                    e.done
+                      ? 'bg-green-500/10 text-green-600'
+                      : light ? 'bg-gray-100 text-gray-400' : 'bg-white/5 text-gray-600'
+                  }`}>
+                    {e.done ? 'Completed' : 'Planned'}
+                  </span>
+                </div>
+                <h3 className={`mb-2 font-bold text-base ${heading}`}>{e.title}</h3>
+                <p className={`text-sm leading-relaxed ${e.done ? body : muted}`}>{e.description}</p>
+              </div>
+            </div>
+          ))}
         </div>
-      </div>
-    </section>
+      </PageContainer>
+    </PageSection>
   )
 }
