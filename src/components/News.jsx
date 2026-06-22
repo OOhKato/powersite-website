@@ -39,30 +39,38 @@ export default function News({ standalone = false }) {
           </h2>
         </SectionHeader>
 
-        <div className="mx-auto grid w-full max-w-2xl grid-cols-1 gap-5">
+        <div className="mx-auto grid w-full max-w-3xl grid-cols-1 gap-5">
           {articles.map((a, i) => (
             <article key={i}
-              className={`group flex flex-col rounded-2xl border p-6 sm:p-8 card-glow transition-all duration-300 ${card}`}>
-              <div className={`mb-5 flex h-44 w-full items-center justify-center rounded-xl border ${imgPlaceholder}`}>
-                <span className="text-xs uppercase tracking-widest">Image Placeholder</span>
+              className={`group flex flex-col sm:flex-row gap-6 rounded-2xl border p-6 sm:p-8 card-glow transition-all duration-300 ${card}`}>
+              <div className="w-full sm:w-48 shrink-0 overflow-hidden rounded-xl">
+                <img
+                  src="/news/Event-photo.jpg"
+                  alt={a.title}
+                  className="w-full h-48 sm:h-full object-cover object-top"
+                />
               </div>
-              <div className="mb-3 flex items-center gap-3">
-                <span className={`text-xs font-bold border px-2 py-0.5 rounded-md ${cardTag}`}>{a.tag}</span>
-                <span className={`text-xs ${cardDate}`}>{a.date}</span>
+              <div className="flex flex-col justify-between">
+                <div>
+                  <div className="mb-3 flex items-center gap-3">
+                    <span className={`text-xs font-bold border px-2 py-0.5 rounded-md ${cardTag}`}>{a.tag}</span>
+                    <span className={`text-xs ${cardDate}`}>{a.date}</span>
+                  </div>
+                  <h3 className={`mb-3 font-bold text-xl group-hover:text-green-500 transition-colors ${heading}`}>{a.title}</h3>
+                  <p className={`mb-6 text-sm leading-relaxed ${body}`}>{a.excerpt}</p>
+                </div>
+                <a
+                  href={a.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-green-500 text-sm font-semibold hover:gap-3 transition-all"
+                >
+                  Mehr lesen auf LinkedIn
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </a>
               </div>
-              <h3 className={`mb-3 font-bold text-xl group-hover:text-green-500 transition-colors ${heading}`}>{a.title}</h3>
-              <p className={`mb-6 flex-1 text-sm leading-relaxed ${body}`}>{a.excerpt}</p>
-              <a
-                href={a.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-green-500 text-sm font-semibold hover:gap-3 transition-all"
-              >
-                Mehr lesen auf LinkedIn
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </a>
             </article>
           ))}
         </div>
