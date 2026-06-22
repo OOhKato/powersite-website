@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Solution() {
     return (
         <>
@@ -14,9 +16,10 @@ export default function Solution() {
 
                     <div className="hero-buttons">
 
-                        <a className="btn secondary" href="/contact">
+                        <Link className="btn secondary" to="/contact">
                             Request Pitch Deck
-                        </a>
+                        </Link>
+
                     </div>
 
                 </div>
@@ -105,12 +108,13 @@ export default function Solution() {
 
                     <iframe
                         src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                        title="Demo Video"
                     />
 
                     <div style={{ marginTop: "20px" }}>
-                        <a className="btn" href="/contact">
+                        <Link className="btn" to="/contact">
                             Request Live Demo Access
-                        </a>
+                        </Link>
                     </div>
 
                 </div>
@@ -118,3 +122,4 @@ export default function Solution() {
         </>
     );
 }
+``
