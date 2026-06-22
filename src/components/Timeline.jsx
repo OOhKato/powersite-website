@@ -4,26 +4,26 @@ import { PageSection, PageContainer, SectionHeader } from './Section'
 const events = [
   {
     quarter: '2025 Q3',
-    title: 'Initiale Gründungsidee & Problemvalidierung',
-    description: 'Validierung der Herausforderungen im Bereich Wasserstoff- und PtX-Optimierung.',
+    title: 'Initial Founding Idea & Problem Validation',
+    description: 'Validation of challenges in the field of hydrogen and PtX optimization.',
     done: true,
   },
   {
     quarter: '2025 Q4',
-    title: 'Geschäftsmodell & technische Konzeption',
-    description: 'Ausarbeitung des Geschäftsmodells, erste Pilotpartnergespräche und technische Plattformkonzeption.',
+    title: 'Business Model & Technical Design',
+    description: 'Development of the business model, initial pilot partner discussions and technical platform conception.',
     done: true,
   },
   {
     quarter: '2026 Q2',
-    title: 'Proof-of-Concept Vorbereitung',
-    description: 'Weiterentwicklung des MVP-Konzepts und Abstimmung mit Advisors und Partnern.',
+    title: 'Proof-of-Concept Preparation',
+    description: 'Further development of the MVP concept and alignment with advisors and partners.',
     done: false,
   },
   {
     quarter: '2027',
-    title: 'Start der MVP-Entwicklung',
-    description: 'Beginn der Pilotvorbereitung und Validierung mit realen oder synthetischen Betriebsdaten.',
+    title: 'Start of MVP Development',
+    description: 'Beginning of pilot preparation and validation with real or synthetic operational data.',
     done: false,
   },
 ]
@@ -54,10 +54,10 @@ export default function Timeline({ standalone = false }) {
             Timeline
           </span>
           <h2 className={`mb-4 text-3xl sm:text-4xl md:text-5xl font-black ${heading}`}>
-            Unsere <span className="text-green-500">Entwicklung</span>
+            Our <span className="text-green-500">Journey</span>
           </h2>
           <p className={`mx-auto max-w-xl text-base leading-relaxed ${body}`}>
-            Von der Idee bis zur autonomen Optimierung.
+            From idea to autonomous optimization.
           </p>
         </SectionHeader>
 
@@ -93,7 +93,7 @@ export default function Timeline({ standalone = false }) {
                       ? 'bg-green-500/10 text-green-600'
                       : light ? 'bg-gray-100 text-gray-400' : 'bg-white/5 text-gray-600'
                   }`}>
-                    {e.done ? 'Abgeschlossen' : 'Geplant'}
+                    {e.done ? 'Completed' : 'Planned'}
                   </span>
                 </div>
                 <h3 className={`mb-2 font-bold text-base ${heading}`}>{e.title}</h3>

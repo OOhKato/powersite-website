@@ -4,9 +4,9 @@ import { PageSection, PageContainer, SectionHeader } from './Section'
 const articles = [
   {
     tag: 'Event',
-    date: 'Juni 2026',
-    title: 'Powerwise beim Gründungs-Event Bayern',
-    excerpt: 'Powerwise präsentierte sich beim Innovations-Event der Bayerischen Staatsregierung und GründungsLab Bayern. Ein wichtiger Schritt für Sichtbarkeit, Netzwerk und zukünftige Kooperationen.',
+    date: 'June 2026',
+    title: 'Powerwise at the Gründungs-Event Bayern',
+    excerpt: 'Powerwise presented at the innovation event of the Bavarian State Government and GründungsLab Bayern — an important step for visibility, networking and future collaborations.',
     href: 'https://www.linkedin.com/feed/update/urn:li:activity:7341145358074269698/',
   },
 ]
@@ -35,7 +35,7 @@ export default function News({ standalone = false }) {
             News
           </span>
           <h2 className={`mb-4 text-3xl sm:text-4xl md:text-5xl font-black ${heading}`}>
-            Aktuelle <span className="text-green-500">Updates</span>
+            Latest <span className="text-green-500">Updates</span>
           </h2>
         </SectionHeader>
 
@@ -65,7 +65,7 @@ export default function News({ standalone = false }) {
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-green-500 text-sm font-semibold hover:gap-3 transition-all"
                 >
-                  Mehr lesen auf LinkedIn
+                  Read more on LinkedIn
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
