@@ -47,17 +47,12 @@ export default function Navbar({ hideLinks = false }) {
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${navBg}`}>
       <PageContainer className="flex items-center justify-between py-3 sm:py-4 !text-left">
-        <Link to="/" className="flex items-center gap-3 group">
-          <div className="relative w-9 h-9">
-            <div className="absolute inset-0 rounded-lg bg-green-500 opacity-20 group-hover:opacity-40 transition-opacity blur-sm" />
-            <div className={`relative w-9 h-9 rounded-lg border border-green-500/60 flex items-center justify-center ${light ? 'bg-white' : 'bg-black'}`}>
-              <span className="text-green-500 font-black text-xs">PW</span>
-            </div>
-          </div>
-          <div>
-            <span className={`font-black text-lg tracking-tight ${light ? 'text-gray-900' : 'text-white'}`}>Powerwise</span>
-            <span className="text-green-500 font-black text-lg tracking-tight"> AI</span>
-          </div>
+        <Link to="/" className="flex items-center group">
+          <img
+            src="/logo.png"
+            alt="Powerwise AI"
+            className={`h-12 w-auto transition-all ${!light ? '[filter:invert(1)_hue-rotate(180deg)]' : ''}`}
+          />
         </Link>
 
         {!hideLinks && (
