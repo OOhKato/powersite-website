@@ -4,6 +4,7 @@ export const navLinks = [
   { label: 'Solutions', to: '/solutions' },
   { label: 'News', to: '/news' },
   { label: 'Team', to: '/team' },
+  { label: 'Investors', to: '/investors' },
   { label: 'Contact Us', to: '/contact' },
 ]
 
